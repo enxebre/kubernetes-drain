@@ -172,7 +172,7 @@ func Drain(client kubernetes.Interface, nodes []*corev1.Node, options *DrainOpti
 			logf(options.Logger, "drained node %q", node.Name)
 		} else {
 			log(options.Logger, err)
-			logf(options.Logger, "unable to drain node %q", node.Name)
+			logf(options.Logger, "unable to drain node %q: %v", node.Name, err)
 			remainingNodes := []string{}
 			fatal = err
 			for _, remainingNode := range nodes {
